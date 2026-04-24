@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CACHATTO One – Hybrid Work Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* ── Dropdown CSS (same as index.html) ── */
+        .nav-products {
+            position: relative;
+        }
+
+        .nav-products-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            color: #4b5563;
+            font-weight: 500;
+            border: none;
+            background: none;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: color 0.18s;
+        }
+
+        .nav-products:hover .nav-products-btn {
+            color: #2563eb;
+        }
+
+        .chevron {
+            width: 14px;
+            height: 14px;
+            color: #9ca3af;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-products:hover .chevron {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+
+        .dropdown-panel {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-6px);
+            width: 220px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10), 0 1.5px 0px rgba(255, 255, 255, 0.7) inset;
+            padding: 6px;
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+            transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+            z-index: 100;
+        }
+
+        .dropdown-panel::before {
+            content: '';
+            position: absolute;
+            top: -14px;
+            left: 0;
+            right: 0;
+            height: 14px;
+        }
+
+        .nav-products:hover .dropdown-panel {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 10px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #1e3a5f;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(37, 99, 235, 0.08);
+            color: #1d4ed8;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 4px 14px;
+        }
+
+        /* ── Hero gradient (matches reference: blue→purple→pink) ── */
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e40af 0%, #4f46e5 40%, #7c3aed 65%, #db2777 100%);
+        }
+
+        /* ── Architecture diagram card connectors ── */
+        .arch-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563eb;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* ── Animate on scroll (simple fade-up) ── */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- ══════════════════════════════════════
+         HEADER / NAV  (identical to index.html)
+    ══════════════════════════════════════ -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <div>
+                <a href="index.html">
+                    <img src="Assets/logos/CACHATTO-blue.svg" alt="CACHATTO" class="h-6" />
+                </a>
+            </div>
+
+            <nav class="hidden md:flex space-x-8 text-gray-600 font-medium items-center">
+                <a href="index.html" class="hover:text-blue-600">Home</a>
+                <a href="#" class="hover:text-blue-600">About us</a>
+                <a href="#" class="hover:text-blue-600">Solutions</a>
+
+                <!-- Products dropdown -->
+                <div class="nav-products">
+                    <button class="nav-products-btn">
+                        Products
+                        <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 6l4 4 4-4" />
+                        </svg>
+                    </button>
+                    <div class="dropdown-panel">
+                        <a href="cachatto-one.html" class="dropdown-item"
+                            style="color:#1d4ed8;background:rgba(37,99,235,0.06);">CACHATTO One</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Ninja Connect Telework</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Ninja Connect ISM</a>
+                    </div>
+                </div>
+
+                <a href="#" class="hover:text-blue-600">Resources</a>
+                <a href="#" class="hover:text-blue-600">Career</a>
+                <a href="#" class="hover:text-blue-600">Contact</a>
+            </nav>
+
+            <div class="hidden md:flex">
+                <a href="#"
+                    class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-500 transition">
+                    Book a demo →
+                </a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 hidden flex-col">
+            <div class="flex items-center justify-between px-6 py-4 border-b">
+                <img src="Assets/logos/CACHATTO-blue.svg" alt="CACHATTO" class="h-6" />
+                <button id="close-btn" class="text-gray-700">✕</button>
+            </div>
+            <nav class="flex flex-col px-6 py-6 space-y-6 text-lg text-gray-800 font-medium">
+                <a href="index.html">Home</a>
+                <a href="#">About us</a>
+                <a href="#">Solutions</a>
+                <div>
+                    <button id="mobile-products-btn" class="flex items-center justify-between w-full text-left">
+                        Products
+                        <svg id="mobile-chevron" class="w-4 h-4 text-gray-400 transition-transform duration-200"
+                            viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 6l4 4 4-4" />
+                        </svg>
+                    </button>
+                    <div id="mobile-products-sub" class="hidden mt-4 ml-3 space-y-3 border-l-2 border-blue-100 pl-4">
+                        <a href="cachatto-one.html" class="block text-base text-blue-600 font-semibold">CACHATTO One</a>
+                        <a href="#" class="block text-base text-gray-600 hover:text-blue-600">Ninja Connect Telework</a>
+                        <a href="#" class="block text-base text-gray-600 hover:text-blue-600">Ninja Connect ISM</a>
+                    </div>
+                </div>
+                <a href="#">Resources</a>
+                <a href="#">Career</a>
+                <a href="#">Contact</a>
+                <a href="#" class="mt-6 bg-blue-600 text-white px-6 py-3 rounded-full text-center">Book a demo →</a>
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 1 — HERO BANNER
+         Gradient banner with title + breadcrumb
+    ══════════════════════════════════════ -->
+    <section class="hero-gradient pt-36 pb-24 relative overflow-hidden">
+
+        <!-- Decorative circles for depth -->
+        <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-white opacity-5"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-blue-300 opacity-10 blur-3xl"></div>
+
+        <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
+
+            <!-- Breadcrumb -->
+            <div class="inline-flex items-center gap-2 text-white/60 text-sm mb-6">
+                <a href="index.html" class="hover:text-white transition">Home</a>
+                <span>/</span>
+                <span class="text-white/80">Products</span>
+                <span>/</span>
+                <span class="text-white font-medium">CACHATTO One</span>
+            </div>
+
+            <!-- Badge -->
+            <div
+                class="inline-block bg-white/15 backdrop-blur-sm border border-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wider uppercase">
+                Hybrid Work Platform
+            </div>
+
+            <!-- Headline -->
+            <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6">
+                What is <span class="text-yellow-300">CACHATTO One</span>?
+            </h1>
+
+            <p class="text-white/75 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+                A unified cloud platform that integrates and manages multiple PC-based business tools — securely, from
+                anywhere.
+            </p>
+
+            <!-- Stats row -->
+            <div class="mt-12 grid grid-cols-3 gap-6 max-w-xl mx-auto">
+                <div class="text-center">
+                    <p class="text-3xl font-bold text-white">500+</p>
+                    <p class="text-white/60 text-sm mt-1">Enterprises</p>
+                </div>
+                <div class="text-center border-x border-white/20">
+                    <p class="text-3xl font-bold text-white">99.9%</p>
+                    <p class="text-white/60 text-sm mt-1">Uptime SLA</p>
+                </div>
+                <div class="text-center">
+                    <p class="text-3xl font-bold text-white">2004</p>
+                    <p class="text-white/60 text-sm mt-1">Founded</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Wave bottom -->
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+            <svg viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" class="w-full">
+                <path d="M0,40 C360,80 1080,0 1440,40 L1440,60 L0,60 Z" fill="#f9fafb" />
+            </svg>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 2 — WHAT IS CACHATTO ONE
+         Description + key paragraph
+    ══════════════════════════════════════ -->
+    <section class="bg-gray-50 py-24">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+
+                <!-- LEFT: Text -->
+                <div class="fade-up">
+                    <span
+                        class="inline-block text-blue-600 text-sm font-semibold uppercase tracking-widest mb-4">Overview</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
+                        CACHATTO One is a hybrid work platform that integrates and manages multiple types of PC-based
+                        business tools on the cloud.
+                    </h2>
+                    <div class="w-12 h-1 bg-blue-600 rounded mb-8"></div>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        CACHATTO One provides multiple types of PC-based business tools, secure communication methods,
+                        and cloud/on-premise integration functions — all in one place.
+                    </p>
+                    <p class="text-gray-600 text-lg leading-relaxed">
+                        It allows for integrated management and operation on the cloud, easily creating an environment
+                        where users can work <span class="font-semibold text-gray-800">"anytime," "anywhere,"
+                            "securely,"</span> and with the <span class="font-semibold text-gray-800">"optimal
+                            tools"</span> for them.
+                    </p>
+                    <p class="mt-6 text-sm text-gray-400 italic">
+                        * To integrate with and access on-premises resources, a CACHATTO connector must be installed
+                        within the target network.
+                    </p>
+                </div>
+
+                <!-- RIGHT: Visual card -->
+                <div class="fade-up delay-2">
+                    <div class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8">
+
+                        <!-- Platform label -->
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">CACHATTO One Platform</p>
+                                <p class="text-sm text-gray-500">Management · Communication · Collaboration</p>
+                            </div>
+                        </div>
+
+                        <!-- Feature pills -->
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-blue-50 text-blue-700 text-xs font-medium px-3 py-1.5 rounded-full">Secure
+                                Browser</span>
+                            <span
+                                class="bg-purple-50 text-purple-700 text-xs font-medium px-3 py-1.5 rounded-full">Remote
+                                Desktop</span>
+                            <span class="bg-green-50 text-green-700 text-xs font-medium px-3 py-1.5 rounded-full">VPN
+                                Connect</span>
+                            <span class="bg-orange-50 text-orange-700 text-xs font-medium px-3 py-1.5 rounded-full">DLP
+                                Protection</span>
+                            <span class="bg-pink-50 text-pink-700 text-xs font-medium px-3 py-1.5 rounded-full">MFA /
+                                IDaaS</span>
+                            <span class="bg-teal-50 text-teal-700 text-xs font-medium px-3 py-1.5 rounded-full">File
+                                Security</span>
+                        </div>
+
+                        <!-- Connectivity visual -->
+                        <div class="bg-gray-50 rounded-2xl p-5">
+                            <div class="flex items-center justify-between gap-2">
+
+                                <!-- Devices -->
+                                <div class="text-center">
+                                    <div
+                                        class="w-12 h-12 bg-blue-100 rounded-xl mx-auto flex items-center justify-center mb-2">
+                                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" stroke-width="1.8">
+                                            <rect x="2" y="3" width="20" height="14" rx="2" />
+                                            <path d="M8 21h8M12 17v4" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-xs text-gray-500 font-medium">Windows</p>
+                                    <p class="text-xs text-gray-400">iOS / Android</p>
+                                </div>
+
+                                <!-- Arrow -->
+                                <div class="flex-1 flex items-center justify-center">
+                                    <div class="flex items-center gap-1 text-blue-400">
+                                        <div class="h-px flex-1 bg-blue-200"></div>
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- Platform box -->
+                                <div
+                                    class="text-center bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl px-4 py-3">
+                                    <p class="text-white text-xs font-bold">CACHATTO</p>
+                                    <p class="text-white/80 text-xs">One</p>
+                                </div>
+
+                                <!-- Arrow -->
+                                <div class="flex-1 flex items-center justify-center">
+                                    <div class="flex items-center gap-1 text-blue-400">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                            stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                        <div class="h-px flex-1 bg-blue-200"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Cloud + OnPrem -->
+                                <div class="text-center">
+                                    <div
+                                        class="w-12 h-12 bg-indigo-100 rounded-xl mx-auto flex items-center justify-center mb-2">
+                                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24" stroke-width="1.8">
+                                            <path
+                                                d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                                        </svg>
+                                    </div>
+                                    <p class="text-xs text-gray-500 font-medium">Cloud</p>
+                                    <p class="text-xs text-gray-400">On-Premise</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 3 — ARCHITECTURE DIAGRAM
+         How the platform works (3-layer visual)
+    ══════════════════════════════════════ -->
+    <section class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="text-center mb-16 fade-up">
+                <span class="inline-block text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">Platform
+                    Architecture</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How CACHATTO One Works</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">
+                    A single cloud layer that bridges your workforce devices to all corporate systems — managed,
+                    monitored, and secured.
+                </p>
+            </div>
+
+            <!-- Architecture flow: 3 columns -->
+            <div class="grid md:grid-cols-3 gap-6 items-stretch fade-up delay-1">
+
+                <!-- COL 1: User Devices -->
+                <div class="bg-blue-50 rounded-3xl p-8 flex flex-col gap-4">
+                    <h3 class="text-sm font-bold text-blue-600 uppercase tracking-widest mb-2">User Devices</h3>
+
+                    <div class="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.8">
+                                <rect x="2" y="3" width="20" height="14" rx="2" />
+                                <path d="M8 21h8M12 17v4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800 text-sm">Windows PC</p>
+                            <p class="text-xs text-gray-500">Managed or unmanaged</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.8">
+                                <rect x="5" y="2" width="14" height="20" rx="2" />
+                                <path d="M12 18h.01" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800 text-sm">iOS / Android</p>
+                            <p class="text-xs text-gray-500">Mobile workforce</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="w-10 h-10 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.8">
+                                <path
+                                    d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800 text-sm">BYOD Devices</p>
+                            <p class="text-xs text-gray-500">Personal devices, secured</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COL 2: CACHATTO One Platform -->
+                <div
+                    class="bg-gradient-to-b from-blue-600 to-indigo-700 rounded-3xl p-8 flex flex-col gap-4 text-white shadow-xl shadow-blue-200">
+                    <h3 class="text-sm font-bold text-blue-200 uppercase tracking-widest mb-2">CACHATTO One</h3>
+
+                    <div class="bg-white/15 backdrop-blur rounded-2xl p-4">
+                        <p class="font-semibold text-sm mb-3 text-blue-100">Management & Communication</p>
+                        <div class="grid grid-cols-2 gap-2">
+                            <span class="bg-white/20 rounded-lg px-3 py-1.5 text-xs text-center">Secure Browser</span>
+                            <span class="bg-white/20 rounded-lg px-3 py-1.5 text-xs text-center">File Security</span>
+                            <span class="bg-white/20 rounded-lg px-3 py-1.5 text-xs text-center">Remote Desktop</span>
+                            <span class="bg-white/20 rounded-lg px-3 py-1.5 text-xs text-center">VPN Connect</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/15 backdrop-blur rounded-2xl p-4">
+                        <p class="font-semibold text-sm mb-3 text-blue-100">Security & Integration</p>
+                        <div class="grid grid-cols-3 gap-2">
+                            <span class="bg-white/20 rounded-lg px-2 py-1.5 text-xs text-center">DLP</span>
+                            <span class="bg-white/20 rounded-lg px-2 py-1.5 text-xs text-center">MFA</span>
+                            <span class="bg-white/20 rounded-lg px-2 py-1.5 text-xs text-center">IDaaS</span>
+                        </div>
+                    </div>
+
+                    <div class="mt-auto text-center">
+                        <span
+                            class="inline-block bg-yellow-400 text-blue-900 text-xs font-bold px-4 py-1.5 rounded-full">Cloud
+                            Managed</span>
+                    </div>
+                </div>
+
+                <!-- COL 3: Corporate Systems -->
+                <div class="bg-indigo-50 rounded-3xl p-8 flex flex-col gap-4">
+                    <h3 class="text-sm font-bold text-indigo-600 uppercase tracking-widest mb-2">Corporate Systems</h3>
+
+                    <div class="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.8">
+                                <path
+                                    d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800 text-sm">Cloud Services</p>
+                            <p class="text-xs text-gray-500">Microsoft 365, Google Workspace</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="w-10 h-10 bg-orange-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.8">
+                                <rect x="2" y="2" width="20" height="8" rx="2" />
+                                <rect x="2" y="14" width="20" height="8" rx="2" />
+                                <path d="M6 6h.01M6 18h.01" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800 text-sm">On-Premises</p>
+                            <p class="text-xs text-gray-500">Business PC, File servers</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 bg-white rounded-2xl p-4 shadow-sm">
+                        <div class="w-10 h-10 bg-teal-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <svg class="w-5 h-5 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                stroke-width="1.8">
+                                <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-gray-800 text-sm">Web Applications</p>
+                            <p class="text-xs text-gray-500">Internal & SaaS tools</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Connector note -->
+            <p class="mt-8 text-center text-sm text-gray-400 italic">
+                * A CACHATTO connector must be installed within the target network to integrate with on-premises
+                resources.
+            </p>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 4 — 3 VALUE PROP CARDS
+         (Maps to the 3 boxes in reference image)
+    ══════════════════════════════════════ -->
+    <section class="bg-gray-50 py-24">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="text-center mb-16 fade-up">
+                <span class="inline-block text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">Core
+                    Benefits</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Why choose CACHATTO One?</h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+
+                <!-- Card 1 -->
+                <div
+                    class="group bg-white rounded-3xl p-10 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 fade-up delay-1">
+                    <div
+                        class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-600 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-blue-600 group-hover:text-white transition-colors duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">We offer a variety of business tools for PCs.</h3>
+                    <p class="text-gray-500 leading-relaxed">
+                        Access remote desktops, secure browsers, file management and collaboration tools — all
+                        integrated into one platform with no extra installation required.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="group bg-white rounded-3xl p-10 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 fade-up delay-2">
+                    <div
+                        class="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-indigo-600 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-indigo-600 group-hover:text-white transition-colors duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Select the necessary business tools for each user.
+                    </h3>
+                    <p class="text-gray-500 leading-relaxed">
+                        Administrators can assign specific tools per user role — ensuring each team member gets exactly
+                        what they need without unnecessary access or complexity.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="group bg-white rounded-3xl p-10 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 fade-up delay-3">
+                    <div
+                        class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-600 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-green-600 group-hover:text-white transition-colors duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Integrated management and operation of hybrid work
+                        environments.</h3>
+                    <p class="text-gray-500 leading-relaxed">
+                        Manage cloud and on-premise environments from a single console. Monitor access, enforce security
+                        policies, and streamline IT operations across your entire workforce.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 5 — SECURITY FEATURES
+         Zero-trust security highlights
+    ══════════════════════════════════════ -->
+    <section class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+
+                <!-- LEFT: Feature list -->
+                <div class="fade-up">
+                    <span
+                        class="inline-block text-blue-600 text-sm font-semibold uppercase tracking-widest mb-4">Security
+                        First</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-8 leading-tight">
+                        Enterprise-grade security built into every layer.
+                    </h2>
+
+                    <div class="space-y-5">
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 mb-1">Data Loss Prevention (DLP)</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Prevents data exfiltration from
+                                    corporate systems to personal devices or external storage.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 mb-1">Multi-Factor Authentication (MFA)</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Strong authentication enforced at every
+                                    login — compatible with major IDaaS providers.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 mb-1">Zero Data Residency on Devices</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">No corporate data stored on endpoint
+                                    devices — all sessions are cloud-streamed and encrypted.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    stroke-width="2.5">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-gray-900 mb-1">Access Log & Audit Trail</p>
+                                <p class="text-gray-500 text-sm leading-relaxed">Full visibility into who accessed what,
+                                    when, and from where — for compliance and governance.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: Security metric cards -->
+                <div class="grid grid-cols-2 gap-4 fade-up delay-2">
+                    <div class="bg-blue-600 rounded-3xl p-6 text-white">
+                        <p class="text-4xl font-bold mb-2">0</p>
+                        <p class="text-blue-200 text-sm">Data stored on endpoints</p>
+                    </div>
+                    <div class="bg-gray-900 rounded-3xl p-6 text-white">
+                        <p class="text-4xl font-bold mb-2">256-bit</p>
+                        <p class="text-gray-400 text-sm">Encryption standard</p>
+                    </div>
+                    <div class="bg-indigo-50 rounded-3xl p-6 col-span-2">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="w-12 h-12 bg-indigo-600 rounded-2xl flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                    stroke-width="1.8">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">ISO 27001 Aligned</p>
+                                <p class="text-gray-500 text-sm">Designed to meet international information security
+                                    management standards.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-green-50 rounded-3xl p-6">
+                        <p class="text-3xl font-bold text-green-600 mb-2">99.9%</p>
+                        <p class="text-gray-500 text-sm">Uptime guarantee</p>
+                    </div>
+                    <div class="bg-orange-50 rounded-3xl p-6">
+                        <p class="text-3xl font-bold text-orange-500 mb-2">24/7</p>
+                        <p class="text-gray-500 text-sm">Monitoring & support</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 6 — USE CASES
+    ══════════════════════════════════════ -->
+    <section class="bg-gray-50 py-24">
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="text-center mb-16 fade-up">
+                <span class="inline-block text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">Use Cases</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Built for every hybrid work scenario</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg">From remote teams to regulated industries, CACHATTO One adapts to how your workforce operates.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+
+                <!-- Card 1 -->
+                <div class="group bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex gap-6 fade-up delay-1">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-blue-600 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-blue-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Remote Work Enablement</h3>
+                        <p class="text-gray-500 leading-relaxed text-sm">Give employees secure, full-featured access to corporate tools from home or anywhere — without shipping managed devices.</p>
+                        <span class="inline-block mt-4 text-blue-600 text-sm font-semibold">Windows · iOS · Android →</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex gap-6 fade-up delay-2">
+                    <div class="w-14 h-14 bg-purple-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-purple-600 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-purple-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">BYOD &amp; Unmanaged Devices</h3>
+                        <p class="text-gray-500 leading-relaxed text-sm">Let employees use personal devices securely. No MDM required — DLP and zero data residency ensure corporate data never touches the device.</p>
+                        <span class="inline-block mt-4 text-purple-600 text-sm font-semibold">Zero data residency →</span>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex gap-6 fade-up delay-3">
+                    <div class="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-green-600 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-green-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Compliance &amp; Regulated Industries</h3>
+                        <p class="text-gray-500 leading-relaxed text-sm">Finance, healthcare, and government sectors rely on CACHATTO One for audit trails, MFA enforcement, and strict data governance.</p>
+                        <span class="inline-block mt-4 text-green-600 text-sm font-semibold">ISO 27001 aligned →</span>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="group bg-white rounded-3xl p-8 border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex gap-6 fade-up delay-4">
+                    <div class="w-14 h-14 bg-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-orange-500 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-orange-500 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Hybrid Cloud &amp; On-Premise IT</h3>
+                        <p class="text-gray-500 leading-relaxed text-sm">Bridge Microsoft 365, Google Workspace, and on-premise file servers from a single management console — no extra VPN appliances needed.</p>
+                        <span class="inline-block mt-4 text-orange-500 text-sm font-semibold">Cloud + On-Premise →</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 7 — FEATURE COMPARISON TABLE
+    ══════════════════════════════════════ -->
+    <section class="bg-white py-24">
+        <div class="max-w-5xl mx-auto px-6">
+
+            <div class="text-center mb-16 fade-up">
+                <span class="inline-block text-blue-600 text-sm font-semibold uppercase tracking-widest mb-3">Comparison</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How CACHATTO One stacks up</h2>
+                <p class="text-gray-500 max-w-xl mx-auto text-lg">See why enterprises choose CACHATTO One over legacy VPN and standalone remote desktop solutions.</p>
+            </div>
+
+            <div class="overflow-x-auto rounded-3xl border border-gray-100 shadow-sm fade-up delay-1">
+                <table class="w-full text-sm">
+                    <thead>
+                        <tr class="bg-gray-50">
+                            <th class="text-left px-6 py-5 text-gray-500 font-semibold w-1/3">Feature</th>
+                            <th class="px-6 py-5 text-blue-700 font-bold text-center bg-blue-50 rounded-t-xl">CACHATTO One</th>
+                            <th class="px-6 py-5 text-gray-500 font-semibold text-center">Traditional VPN</th>
+                            <th class="px-6 py-5 text-gray-500 font-semibold text-center">Basic RDP</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-100">
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 text-gray-700 font-medium">Zero data on device</td>
+                            <td class="px-6 py-4 text-center bg-blue-50/40"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-600 font-bold text-base">✓</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 text-gray-700 font-medium">MFA / IDaaS integration</td>
+                            <td class="px-6 py-4 text-center bg-blue-50/40"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-600 font-bold text-base">✓</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-yellow-100 text-yellow-600 font-bold text-sm">~</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 text-gray-700 font-medium">Cloud-managed console</td>
+                            <td class="px-6 py-4 text-center bg-blue-50/40"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-600 font-bold text-base">✓</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 text-gray-700 font-medium">DLP (Data Loss Prevention)</td>
+                            <td class="px-6 py-4 text-center bg-blue-50/40"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-600 font-bold text-base">✓</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 text-gray-700 font-medium">BYOD support</td>
+                            <td class="px-6 py-4 text-center bg-blue-50/40"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-600 font-bold text-base">✓</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-yellow-100 text-yellow-600 font-bold text-sm">~</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 text-gray-700 font-medium">Access log &amp; audit trail</td>
+                            <td class="px-6 py-4 text-center bg-blue-50/40"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-600 font-bold text-base">✓</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-yellow-100 text-yellow-600 font-bold text-sm">~</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition">
+                            <td class="px-6 py-4 text-gray-700 font-medium">On-premise + cloud integration</td>
+                            <td class="px-6 py-4 text-center bg-blue-50/40"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-green-100 text-green-600 font-bold text-base">✓</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-yellow-100 text-yellow-600 font-bold text-sm">~</span></td>
+                            <td class="px-6 py-4 text-center"><span class="inline-flex items-center justify-center w-7 h-7 rounded-full bg-red-100 text-red-500 font-bold text-base">✗</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="mt-4 text-center text-xs text-gray-400 italic">✓ Fully supported &nbsp;·&nbsp; ~ Partial / add-on required &nbsp;·&nbsp; ✗ Not supported</p>
+
+        </div>
+    </section>
+
+
+    <!-- ══════════════════════════════════════
+         SECTION 8 — FAQ ACCORDION
+    ══════════════════════════════════════ -->
+    <section class="bg-gray-50 py-24">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
+
+            <!-- LEFT -->
+            <div class="fade-up">
+                <span class="inline-block text-blue-600 text-sm font-semibold uppercase tracking-widest mb-4">FAQ</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">Frequently asked questions</h2>
+                <p class="text-gray-500 text-lg mb-10 max-w-md">Everything you need to know about CACHATTO One. Can't find an answer? Reach out to our team.</p>
+                <a href="#" class="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-500 transition">Contact us →</a>
+            </div>
+
+            <!-- RIGHT — accordion -->
+            <div class="space-y-4 fade-up delay-2">
+
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                    <button onclick="this.parentElement.querySelector('.faq-body').classList.toggle('hidden'); this.querySelector('span.icon').textContent = this.parentElement.querySelector('.faq-body').classList.contains('hidden') ? '+' : '−';" class="flex justify-between items-center w-full text-left px-6 py-5">
+                        <span class="font-semibold text-gray-900">What devices are supported by CACHATTO One?</span>
+                        <span class="icon text-2xl font-light text-blue-600 flex-shrink-0 ml-4">+</span>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-gray-500 leading-relaxed text-sm">
+                        CACHATTO One supports Windows PCs, iOS, and Android devices — both managed and unmanaged (BYOD). No special hardware or MDM enrollment is required on the endpoint.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                    <button onclick="this.parentElement.querySelector('.faq-body').classList.toggle('hidden'); this.querySelector('span.icon').textContent = this.parentElement.querySelector('.faq-body').classList.contains('hidden') ? '+' : '−';" class="flex justify-between items-center w-full text-left px-6 py-5">
+                        <span class="font-semibold text-gray-900">Does CACHATTO One require a connector on-premises?</span>
+                        <span class="icon text-2xl font-light text-blue-600 flex-shrink-0 ml-4">+</span>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-gray-500 leading-relaxed text-sm">
+                        To access on-premises resources (file servers, business PCs, intranet apps), a lightweight CACHATTO Connector must be installed within the target network. Cloud-only access requires no on-premise component.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                    <button onclick="this.parentElement.querySelector('.faq-body').classList.toggle('hidden'); this.querySelector('span.icon').textContent = this.parentElement.querySelector('.faq-body').classList.contains('hidden') ? '+' : '−';" class="flex justify-between items-center w-full text-left px-6 py-5">
+                        <span class="font-semibold text-gray-900">How is DLP enforced on personal devices?</span>
+                        <span class="icon text-2xl font-light text-blue-600 flex-shrink-0 ml-4">+</span>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-gray-500 leading-relaxed text-sm">
+                        All business data is processed and displayed on the cloud side — nothing is downloaded or cached on the personal device. DLP policies block copy, paste, screenshots, and file transfers outside the secure session.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                    <button onclick="this.parentElement.querySelector('.faq-body').classList.toggle('hidden'); this.querySelector('span.icon').textContent = this.parentElement.querySelector('.faq-body').classList.contains('hidden') ? '+' : '−';" class="flex justify-between items-center w-full text-left px-6 py-5">
+                        <span class="font-semibold text-gray-900">Which cloud services can be integrated?</span>
+                        <span class="icon text-2xl font-light text-blue-600 flex-shrink-0 ml-4">+</span>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-gray-500 leading-relaxed text-sm">
+                        CACHATTO One integrates with Microsoft 365, Google Workspace, and major web-conferencing platforms. It also supports IDaaS/SSO providers for federated authentication.
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                    <button onclick="this.parentElement.querySelector('.faq-body').classList.toggle('hidden'); this.querySelector('span.icon').textContent = this.parentElement.querySelector('.faq-body').classList.contains('hidden') ? '+' : '−';" class="flex justify-between items-center w-full text-left px-6 py-5">
+                        <span class="font-semibold text-gray-900">Is there a free trial or evaluation period?</span>
+                        <span class="icon text-2xl font-light text-blue-600 flex-shrink-0 ml-4">+</span>
+                    </button>
+                    <div class="faq-body hidden px-6 pb-5 text-gray-500 leading-relaxed text-sm">
+                        Yes. Contact our sales team to arrange a guided evaluation tailored to your organization's environment. We'll walk you through setup and help you test against your real-world use cases.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CTA Section (from index.html) -->
+    <section class="relative bg-gradient-to-r from-blue-700 to-blue-500 py-24 overflow-hidden">
+
+        <!-- Grid Overlay -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="w-full h-full bg-[linear-gradient(to_right,gray_1px,transparent_1px),linear-gradient(to_bottom,gray_1px,transparent_1px)] bg-[size:60px_60px]">
+            </div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto px-6 text-center text-white">
+
+            <!-- Small Label -->
+            <p class="uppercase tracking-widest text-sm text-blue-100 mb-4">
+                Let's Talk
+            </p>
+
+            <!-- Heading -->
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Need Help?
+            </h2>
+
+            <!-- Subtext -->
+            <p class="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed">
+                Our enterprise security specialists are ready to help you design the right
+                access architecture for your organisation.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#" class="bg-white text-blue-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition">
+                    Talk to an Expert →
+                </a>
+                <a href="#" class="border border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-700 transition">
+                    Request Demo
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FOOTER (from index.html) -->
+    <footer class="bg-[#0B1F3A] text-gray-400 pt-20 pb-10">
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+
+            <!-- LEFT -->
+            <div>
+                <h3 class="text-white text-2xl font-semibold mb-4">
+                    <img src="Assets/logos/CACHATTO-white.svg" alt="CACHATTO" class="h-5">
+                </h3>
+                <p class="text-sm leading-relaxed mb-6">
+                    Secure Unified Digital Workspace. Empowering enterprise teams with
+                    zero-trust access, data protection, and scalable security since 2004.
+                </p>
+                <!-- Social -->
+                <div class="flex space-x-3">
+                    <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition">
+                        <span class="text-sm">in</span>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition">
+                        <span class="text-sm">X</span>
+                    </a>
+                    <a href="#" class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition">
+                        ▶
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUCTS -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Products</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="cachatto-one.html" class="text-white transition">CACHATTO One</a></li>
+                    <li><a href="#" class="hover:text-white transition">NinjaConnect Telework</a></li>
+                    <li><a href="#" class="hover:text-white transition">NinjaConnect ISM</a></li>
+                </ul>
+            </div>
+
+            <!-- SOLUTIONS -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Solutions</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Remote Work Security</a></li>
+                    <li><a href="#" class="hover:text-white transition">BYOD &amp; Unmanaged Devices</a></li>
+                    <li><a href="#" class="hover:text-white transition">Zero Trust Access</a></li>
+                    <li><a href="#" class="hover:text-white transition">IT-OT Security</a></li>
+                </ul>
+            </div>
+
+            <!-- COMPANY -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Company</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="#" class="hover:text-white transition">Customers</a></li>
+                    <li><a href="#" class="hover:text-white transition">Partners</a></li>
+                    <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Divider -->
+        <div class="max-w-7xl mx-auto px-6 mt-16 border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
+            <p>© 2026 CACHATTO India Pvt, Ltd. All rights reserved.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms of Use</a>
+                <a href="#" class="hover:text-white transition">Cookie Settings</a>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- ══════════════════════════════════════
+         SCRIPT — Mobile menu + accordion
+         (same logic as index.html)
+    ══════════════════════════════════════ -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // Mobile menu
+            const btn = document.getElementById('menu-btn');
+            const closeBtn = document.getElementById('close-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            btn.addEventListener('click', () => {
+                menu.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            });
+            closeBtn.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            });
+
+            // Mobile Products accordion
+            document.getElementById('mobile-products-btn').addEventListener('click', () => {
+                const sub = document.getElementById('mobile-products-sub');
+                const chevron = document.getElementById('mobile-chevron');
+                const isOpen = !sub.classList.contains('hidden');
+                sub.classList.toggle('hidden', isOpen);
+                chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
