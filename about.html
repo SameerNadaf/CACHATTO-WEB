@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <!-- Logo -->
+            <div>
+                <img src="Assets/logos/CACHATTO-blue.svg" alt="CACHATTO" class="h-6" />
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 text-gray-600 font-medium">
+                <a href="#" class="hover:text-blue-600">Home</a>
+                <a href="#" class="hover:text-blue-600">About us</a>
+                <a href="#" class="hover:text-blue-600">Solutions</a>
+                <a href="#" class="hover:text-blue-600">Products</a>
+                <a href="#" class="hover:text-blue-600">Resources</a>
+                <a href="#" class="hover:text-blue-600">Career</a>
+                <a href="#" class="hover:text-blue-600">Contact</a>
+            </nav>
+
+            <!-- CTA (Desktop) -->
+            <div class="hidden md:flex">
+                <a href="#"
+                    class="bg-blue-600 text-white px-5 py-2 rounded-full font-medium hover:bg-blue-500 transition">
+                    Book a demo →
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden text-gray-700 focus:outline-none">
+                <!-- Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="fixed inset-0 bg-white z-40 hidden flex-col">
+
+            <!-- Top Bar (same as header feel) -->
+            <div class="flex items-center justify-between px-6 py-4 border-b">
+                <div>
+                    <img src="Assets/logos/cachatto.svg" alt="CACHATTO" class="h-6" />
+                </div>
+
+                <!-- Close Button -->
+                <button id="close-btn" class="text-gray-700">
+                    ✕
+                </button>
+            </div>
+
+            <!-- Menu Items -->
+            <nav class="flex flex-col px-6 py-6 space-y-6 text-lg text-gray-800 font-medium">
+                <a href="#">Home</a>
+                <a href="#">About us</a>
+                <a href="#">Solutions</a>
+                <a href="#">Products</a>
+                <a href="#">Resources</a>
+                <a href="#">Career</a>
+                <a href="#">Contact</a>
+
+                <a href="#" class="mt-6 bg-blue-600 text-white px-6 py-3 rounded-full text-center">
+                    Book a demo →
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- FAQ Section -->
+    <section class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-start">
+
+            <!-- LEFT SIDE -->
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+                    Frequently asked questions
+                </h2>
+
+                <p class="text-gray-500 text-lg mb-10 max-w-md">
+                    Everything you need to know about CACHATTO. Can’t find the answer you’re looking for? Feel free to
+                    reach out.
+                </p>
+
+                <a href="#"
+                    class="inline-flex items-center bg-gray-800 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-600 transition">
+                    Get in touch →
+                </a>
+            </div>
+
+            <!-- RIGHT SIDE (ACCORDION) -->
+            <div class="space-y-6">
+
+                <!-- ITEM -->
+                <div class="border-b border-gray-200 pb-6">
+                    <button class="faq-btn flex justify-between items-center w-full text-left">
+                        <span class="text-lg font-semibold text-gray-900">
+                            Does CACHATTO offer a free trial period?
+                        </span>
+                        <span class="faq-icon text-2xl font-light">+</span>
+                    </button>
+
+                    <div class="faq-content mt-4 text-gray-600 leading-relaxed hidden">
+                        Yes, CACHATTO offers a trial period so enterprises can evaluate secure remote access
+                        capabilities before full deployment.
+                    </div>
+                </div>
+
+                <!-- ITEM -->
+                <div class="border-b border-gray-200 pb-6">
+                    <button class="faq-btn flex justify-between items-center w-full text-left">
+                        <span class="text-lg font-semibold text-gray-900">
+                            What payment methods do you offer?
+                        </span>
+                        <span class="faq-icon text-2xl font-light">+</span>
+                    </button>
+
+                    <div class="faq-content mt-4 text-gray-600 hidden">
+                        We support enterprise billing including invoicing, bank transfers, and custom contract-based
+                        pricing.
+                    </div>
+                </div>
+
+                <!-- ITEM -->
+                <div class="border-b border-gray-200 pb-6">
+                    <button class="faq-btn flex justify-between items-center w-full text-left">
+                        <span class="text-lg font-semibold text-gray-900">
+                            How can I change or cancel my plan?
+                        </span>
+                        <span class="faq-icon text-2xl font-light">+</span>
+                    </button>
+
+                    <div class="faq-content mt-4 text-gray-600 hidden">
+                        Plans can be modified or cancelled through your account manager or support team depending on
+                        your contract.
+                    </div>
+                </div>
+
+                <!-- ITEM -->
+                <div class="border-b border-gray-200 pb-6">
+                    <button class="faq-btn flex justify-between items-center w-full text-left">
+                        <span class="text-lg font-semibold text-gray-900">
+                            What kind of support am I entitled to?
+                        </span>
+                        <span class="faq-icon text-2xl font-light">+</span>
+                    </button>
+
+                    <div class="faq-content mt-4 text-gray-600 hidden">
+                        Enterprise customers get priority support, onboarding assistance, and dedicated technical
+                        guidance.
+                    </div>
+                </div>
+
+                <!-- ITEM -->
+                <div class="border-b border-gray-200 pb-6">
+                    <button class="faq-btn flex justify-between items-center w-full text-left">
+                        <span class="text-lg font-semibold text-gray-900">
+                            Are you continuously adding new features?
+                        </span>
+                        <span class="faq-icon text-2xl font-light">+</span>
+                    </button>
+
+                    <div class="faq-content mt-4 text-gray-600 hidden">
+                        Yes. We actively improve the platform with security enhancements and enterprise-focused
+                        capabilities.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative bg-gradient-to-r from-blue-700 to-blue-500 py-24 overflow-hidden">
+
+        <!-- Grid Overlay -->
+        <div class="absolute inset-0 opacity-30">
+            <div
+                class="w-full h-full bg-[linear-gradient(to_right,gray_1px,transparent_1px),linear-gradient(to_bottom,gray_1px,transparent_1px)] bg-[size:60px_60px]">
+            </div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto px-6 text-center text-white">
+
+            <!-- Small Label -->
+            <p class="uppercase tracking-widest text-sm text-blue-100 mb-4">
+                Let’s Talk
+            </p>
+
+            <!-- Heading -->
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Need Help?
+            </h2>
+
+            <!-- Subtext -->
+            <p class="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed">
+                Our enterprise security specialists are ready to help you design the right
+                access architecture for your organisation.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+
+                <!-- Primary -->
+                <a href="#"
+                    class="bg-white text-blue-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition">
+                    Talk to an Expert →
+                </a>
+
+                <!-- Secondary -->
+                <a href="#"
+                    class="border border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-700 transition">
+                    Request Demo
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0B1F3A] text-gray-400 pt-20 pb-10">
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+
+            <!-- LEFT -->
+            <div>
+                <h3 class="text-white text-2xl font-semibold mb-4">
+                    <img src="Assets/logos/CACHATTO-white.svg" alt="CACHATTO" class="h-5">
+                </h3>
+
+                <p class="text-sm leading-relaxed mb-6">
+                    Secure Unified Digital Workspace. Empowering enterprise teams with
+                    zero-trust access, data protection, and scalable security since 2004.
+                </p>
+
+                <!-- Social -->
+                <div class="flex space-x-3">
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition">
+                        <span class="text-sm">in</span>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition">
+                        <span class="text-sm">X</span>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition">
+                        ▶
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUCTS -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Products</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition">CACHATTO One</a></li>
+                    <li><a href="#" class="hover:text-white transition">NinjaConnect Telework</a></li>
+                    <li><a href="#" class="hover:text-white transition">NinjaConnect ISM</a></li>
+                </ul>
+            </div>
+
+            <!-- SOLUTIONS -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Solutions</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Remote Work Security</a></li>
+                    <li><a href="#" class="hover:text-white transition">BYOD & Unmanaged Devices</a></li>
+                    <li><a href="#" class="hover:text-white transition">Zero Trust Access</a></li>
+                    <li><a href="#" class="hover:text-white transition">IT-OT Security</a></li>
+                </ul>
+            </div>
+
+            <!-- COMPANY -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Company</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="#" class="hover:text-white transition">Customers</a></li>
+                    <li><a href="#" class="hover:text-white transition">Partners</a></li>
+                    <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Divider -->
+        <div
+            class="max-w-7xl mx-auto px-6 mt-16 border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
+
+            <p>© 2026 CACHATTO India Pvt, Ltd. All rights reserved.</p>
+
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms of Use</a>
+                <a href="#" class="hover:text-white transition">Cookie Settings</a>
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            /* =========================
+               MOBILE MENU
+            ========================= */
+            const btn = document.getElementById('menu-btn');
+            const closeBtn = document.getElementById('close-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            if (btn && menu && closeBtn) {
+                btn.addEventListener('click', () => {
+                    menu.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
+                });
+
+                closeBtn.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            }
+
+
+            /* =========================
+            FAQ ACCORDION
+            ========================= */
+            const faqButtons = document.querySelectorAll(".faq-btn");
+
+            faqButtons.forEach((btn) => {
+                btn.addEventListener("click", () => {
+
+                    const content = btn.nextElementSibling;
+                    const icon = btn.querySelector(".faq-icon");
+
+                    const isOpen = !content.classList.contains("hidden");
+
+                    // Close all
+                    document.querySelectorAll(".faq-content").forEach(c => c.classList.add("hidden"));
+                    document.querySelectorAll(".faq-icon").forEach(i => i.textContent = "+");
+
+                    // Open current
+                    if (!isOpen) {
+                        content.classList.remove("hidden");
+                        icon.textContent = "×";
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
