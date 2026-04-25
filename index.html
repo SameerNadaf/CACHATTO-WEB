@@ -23,6 +23,101 @@
         .animate-scroll {
             animation: scroll 45s linear infinite;
         }
+
+        /* Products dropdown */
+        .nav-products {
+            position: relative;
+        }
+
+        .nav-products-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            color: #4b5563;
+            font-weight: 500;
+            border: none;
+            background: none;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: color 0.18s;
+        }
+
+        .nav-products:hover .nav-products-btn {
+            color: #2563eb;
+        }
+
+        .chevron {
+            width: 14px;
+            height: 14px;
+            color: #9ca3af;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-products:hover .chevron {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+
+        .dropdown-panel {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-6px);
+            width: 220px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 16px;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.10),
+                0 1.5px 0px rgba(255, 255, 255, 0.7) inset;
+            padding: 6px;
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+            transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+            z-index: 100;
+        }
+
+        .dropdown-panel::before {
+            content: '';
+            position: absolute;
+            top: -14px;
+            left: 0;
+            right: 0;
+            height: 14px;
+        }
+
+        .nav-products:hover .dropdown-panel {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 10px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #1e3a5f;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(37, 99, 235, 0.08);
+            color: #1d4ed8;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 4px 14px;
+        }
     </style>
 
 </head>
@@ -43,8 +138,23 @@
                 <a href="#" class="hover:text-blue-600">Home</a>
                 <a href="#" class="hover:text-blue-600">About us</a>
                 <a href="#" class="hover:text-blue-600">Solutions</a>
-                <a href="#" class="hover:text-blue-600">Products</a>
-                <a href="#" class="hover:text-blue-600">Resources</a>
+                <div class="nav-products">
+                    <button class="nav-products-btn">
+                        Products
+                        <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 6l4 4 4-4" />
+                        </svg>
+                    </button>
+
+                    <div class="dropdown-panel">
+                        <a href="cachatto-one.html" class="dropdown-item">CACHATTO One</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Ninja Connect Telework</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Ninja Connect ISM</a>
+                    </div>
+                </div> <a href="#" class="hover:text-blue-600">Resources</a>
                 <a href="#" class="hover:text-blue-600">Career</a>
                 <a href="#" class="hover:text-blue-600">Contact</a>
             </nav>
@@ -88,7 +198,21 @@
                 <a href="#">Home</a>
                 <a href="#">About us</a>
                 <a href="#">Solutions</a>
-                <a href="#">Products</a>
+                <div>
+                    <button id="mobile-products-btn" class="flex items-center justify-between w-full text-left">
+                        Products
+                        <svg id="mobile-chevron" class="w-4 h-4 text-gray-400 transition-transform duration-200"
+                            viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 6l4 4 4-4" />
+                        </svg>
+                    </button>
+                    <div id="mobile-products-sub" class="hidden mt-4 ml-3 space-y-3 border-l-2 border-blue-100 pl-4">
+                        <a href="#" class="block text-base text-gray-600 hover:text-blue-600">CACHATTO One</a>
+                        <a href="#" class="block text-base text-gray-600 hover:text-blue-600">Ninja Connect Telework</a>
+                        <a href="#" class="block text-base text-gray-600 hover:text-blue-600">Ninja Connect ISM</a>
+                    </div>
+                </div>
                 <a href="#">Resources</a>
                 <a href="#">Career</a>
                 <a href="#">Contact</a>
@@ -944,6 +1068,15 @@
                 closeBtn.addEventListener('click', () => {
                     menu.classList.add('hidden');
                     document.body.classList.remove('overflow-hidden');
+                });
+
+                // Mobile Products accordion
+                document.getElementById('mobile-products-btn').addEventListener('click', () => {
+                    const sub = document.getElementById('mobile-products-sub');
+                    const chevron = document.getElementById('mobile-chevron');
+                    const isOpen = !sub.classList.contains('hidden');
+                    sub.classList.toggle('hidden', isOpen);
+                    chevron.style.transform = isOpen ? '' : 'rotate(180deg)';
                 });
             }
 
