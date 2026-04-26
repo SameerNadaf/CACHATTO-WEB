@@ -313,77 +313,125 @@
 
     <!-- WHAT WE OFFER SECTION -->
     <section class="bg-white py-24">
-        <div class="max-w-7xl mx-auto px-6">
-
-            <!-- HEADER -->
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                    We offer more than you expect
+        <div class="max-w-7xl mx-auto px-6 text-gray-900">
+            
+            <!-- Header & Navigation -->
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <h2 class="text-4xl md:text-[3.5rem] font-bold leading-[1.1] tracking-tight">
+                    We offer more <br class="hidden md:block" />
+                    than you expect
                 </h2>
-                <p class="text-gray-500 max-w-2xl mx-auto text-lg">
-                    CACHATTO goes beyond secure access by delivering a complete
-                    digital workspace experience designed for enterprise needs.
-                </p>
+                
+                <div class="flex space-x-3 mt-8 md:mt-0">
+                    <button id="offer-prev" class="w-14 h-14 flex items-center justify-center rounded-full bg-[#18181B] text-blue-200 hover:bg-gray-800 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                    </button>
+                    <button id="offer-next" class="w-14 h-14 flex items-center justify-center rounded-full bg-[#18181B] text-blue-200 hover:bg-gray-800 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </div>
             </div>
 
-            <!-- GRID -->
-            <div class="grid md:grid-cols-3 gap-8">
-
-                <!-- CARD 1 -->
-                <div
-                    class="bg-gray-50 rounded-[2rem] p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mb-6 text-xl">
-                        📄
+            <!-- Slider Wrapper -->
+            <div class="overflow-hidden -mx-3">
+                <div id="offer-slider" class="flex transition-transform duration-500 ease-in-out w-full">
+                    
+                    <!-- Slide 1 -->
+                    <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                        <div class="bg-[#FAF9F6] rounded-[28px] p-8 h-[340px] flex flex-col justify-between">
+                            <div class="relative w-12 h-12">
+                                <div class="absolute top-0 left-0 w-10 h-10 rounded-full bg-[#FFF4CC]"></div>
+                                <div class="absolute bottom-0 right-0 z-10 text-gray-900">
+                                    <svg viewBox="0 0 384 512" fill="currentColor" class="w-7 h-7">
+                                        <path d="M64 0C28.7 0 0 28.7 0 64v384c0 35.3 28.7 64 64 64h256c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zm192 0v128h128L256 0zM112 256h160c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64h160c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64h160c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 tracking-tight">Your CRO playbook</h3>
+                                <p class="text-gray-500 text-[15px] leading-relaxed">Lorem ipsum dolor sit amet consectetur. Eu quis integer id accumsan venenatis vivamus nulla amet rhoncus.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                        Unified Workspace
-                    </h3>
-
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Access enterprise applications, files, and systems from a single secure
-                        interface across cloud and on-premise environments.
-                    </p>
-                </div>
-
-                <!-- CARD 2 -->
-                <div
-                    class="bg-gray-50 rounded-[2rem] p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6 text-xl">
-                        🛡️
+                    <!-- Slide 2 -->
+                    <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                        <div class="bg-[#FAF9F6] rounded-[28px] p-8 h-[340px] flex flex-col justify-between">
+                            <div class="relative w-12 h-12">
+                                <div class="absolute top-0 left-0 w-10 h-10 rounded-full bg-[#D7F5F9]"></div>
+                                <div class="absolute bottom-0 right-0 z-10 text-gray-900">
+                                    <svg viewBox="0 0 576 512" fill="currentColor" class="w-8 h-8">
+                                        <path d="M312 24V34.5c6.4 1.2 12.6 2.7 18.2 4.2c12.8 3.4 20.4 16.6 17 29.4s-16.6 20.4-29.4 17c-10.9-2.9-21.1-4.9-30.4-5V144c27 0 53.3 8.3 75.3 23.4c12.1 8.3 15.2 24.8 6.9 36.9s-24.8 15.2-36.9 6.9C317.7 201.2 299.7 195 280 195V205.5c-6.4-1.2-12.6-2.7-18.2-4.2c-12.8-3.4-20.4-16.6-17-29.4s16.6-20.4 29.4-17c10.9 2.9 21.1 4.9 30.4 5V56c-27 0-53.3-8.3-75.3-23.4c-12.1-8.3-15.2-24.8-6.9-36.9s24.8-15.2 36.9-6.9C258.3 2.8 276.3 9 296 9V-1.5C296-10.3 303.2-17.5 312-17.5s16 7.2 16 16V24zM240 128C240 75 283 32 336 32s96 43 96 96c0 53-43 96-96 96s-96-43-96-96zM157.1 278.4L208 300.2c2.1 .9 4.3 1.5 6.6 1.8h.1c25 3.3 50.1 5.1 75.3 5.1H320c26.5 0 48 21.5 48 48s-21.5 48-48 48H187.3c-15.3 0-29.5-6.9-38.9-18.7l-94.6-118c-9.1-11.4-25.7-13.3-37.1-4.2l-3.3 2.6c-11.4 9.1-13.3 25.7-4.2 37.1l94.6 118c18.8 23.5 47.3 37.2 77.4 37.2H320c53 0 96-43 96-96s-43-96-96-96h-7.8c-12 0-24.1-1.3-35.9-3.9l-61.4-13.5c-.8-.2-1.5-.4-2.3-.7l-47.5-19.8L157.1 278.4z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 tracking-tight">100K+ Revenue generated</h3>
+                                <p class="text-gray-500 text-[15px] leading-relaxed">Lorem ipsum dolor sit amet consectetur. Eu quis integer id accumsan venenatis vivamus nulla amet rhoncus.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                        Advanced Security
-                    </h3>
-
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Zero-trust architecture ensures strict access control, strong authentication,
-                        and complete protection against data leakage.
-                    </p>
-                </div>
-
-                <!-- CARD 3 -->
-                <div
-                    class="bg-gray-50 rounded-[2rem] p-8 shadow-sm hover:shadow-md hover:-translate-y-1 transition duration-300">
-                    <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mb-6 text-xl">
-                        🚀
+                    <!-- Slide 3 -->
+                    <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                        <div class="bg-[#FAF9F6] rounded-[28px] p-8 h-[340px] flex flex-col justify-between">
+                            <div class="relative w-12 h-12">
+                                <div class="absolute top-0 left-0 w-10 h-10 rounded-full bg-[#FFE4E4]"></div>
+                                <div class="absolute bottom-0 right-0 z-10 text-gray-900">
+                                    <svg viewBox="0 0 512 512" fill="currentColor" class="w-7 h-7">
+                                        <path d="M375.4 13.9C365.1 5.2 352.3 .7 338.9 .1c-17.6-.8-36.5 2.1-56.7 8.3C223.1 26.6 172.5 61.6 136 106.1L120.3 125.6 103.5 119.2c-35-13.3-75-6.7-103.5 16.9C-5 140.7-3.2 147.2 .7 151.3l85 88.5 26.9 28c8.9 9.3 24 9.5 33.1 .5l21.2-20.9 99 99-20.9 21.2c-9 9.1-8.8 24.2 .5 33.1l28 26.9 88.5 85c4.1 3.9 10.6 5.7 15.2 .7c23.6-28.5 30.2-68.5 16.9-103.5l-6.4-16.8 19.5-15.7c44.5-36.5 79.5-87.1 97.7-146.2c6.2-20.2 9.1-39.1 8.3-56.7c-.6-13.4-5.1-26.2-13.8-36.5L375.4 13.9zM192 144c0-26.5 21.5-48 48-48s48 21.5 48 48s-21.5 48-48 48s-48-21.5-48-48z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 tracking-tight">Quick and affordable</h3>
+                                <p class="text-gray-500 text-[15px] leading-relaxed">Lorem ipsum dolor sit amet consectetur. Eu quis integer id accumsan venenatis vivamus nulla amet rhoncus.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 4 -->
+                    <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                        <div class="bg-[#FAF9F6] rounded-[28px] p-8 h-[340px] flex flex-col justify-between">
+                            <div class="relative w-12 h-12">
+                                <div class="absolute top-0 left-0 w-10 h-10 rounded-full bg-[#EBE4FF]"></div>
+                                <div class="absolute bottom-0 right-0 z-10 text-gray-900">
+                                    <svg viewBox="0 0 512 512" fill="currentColor" class="w-7 h-7">
+                                        <path d="M256 0c4.6 0 9.2 1 13.4 2.9L457.7 82.8c22 9.3 38.4 31 38.3 57.2c-.5 99.2-41.3 280.7-213.6 363.2c-16.7 8-36.1 8-52.8 0C57.3 420.7 16.5 239.2 16 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256 0z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 tracking-tight">Secure unified access</h3>
+                                <p class="text-gray-500 text-[15px] leading-relaxed">Lorem ipsum dolor sit amet consectetur. Eu quis integer id accumsan venenatis vivamus nulla amet rhoncus.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <h3 class="text-xl font-semibold text-gray-900 mb-3">
-                        Work From Anywhere
-                    </h3>
+                    <!-- Slide 5 -->
+                    <div class="w-full md:w-1/3 flex-shrink-0 px-3">
+                        <div class="bg-[#FAF9F6] rounded-[28px] p-8 h-[340px] flex flex-col justify-between">
+                            <div class="relative w-12 h-12">
+                                <div class="absolute top-0 left-0 w-10 h-10 rounded-full bg-[#E4F9E4]"></div>
+                                <div class="absolute bottom-0 right-0 z-10 text-gray-900">
+                                    <svg viewBox="0 0 448 512" fill="currentColor" class="w-7 h-7">
+                                        <path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 tracking-tight">Compliance ready</h3>
+                                <p class="text-gray-500 text-[15px] leading-relaxed">Lorem ipsum dolor sit amet consectetur. Eu quis integer id accumsan venenatis vivamus nulla amet rhoncus.</p>
+                            </div>
+                        </div>
+                    </div>
 
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Enable employees to securely work from any device without VPN complexity,
-                        while maintaining seamless performance.
-                    </p>
                 </div>
-
             </div>
-
+            
         </div>
     </section>
+
 
 
     <!-- TIMELINE SECTION -->
