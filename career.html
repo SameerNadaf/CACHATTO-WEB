@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Careers - CACHATTO</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+         /* Products dropdown */
+        .nav-products {
+            position: relative;
+        }
+
+        .nav-products-btn {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            color: #4b5563;
+            font-weight: 500;
+            border: none;
+            background: none;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: color 0.18s;
+        }
+
+        .nav-products:hover .nav-products-btn {
+            color: #2563eb;
+        }
+
+        .chevron {
+            width: 14px;
+            height: 14px;
+            color: #9ca3af;
+            transition: transform 0.25s ease;
+        }
+
+        .nav-products:hover .chevron {
+            transform: rotate(180deg);
+            color: #2563eb;
+        }
+
+        .dropdown-panel {
+            position: absolute;
+            top: calc(100% + 14px);
+            left: 50%;
+            transform: translateX(-50%) translateY(-6px);
+            width: 220px;
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(18px) saturate(180%);
+            -webkit-backdrop-filter: blur(18px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.45);
+            border-radius: 16px;
+            box-shadow:
+                0 8px 32px rgba(0, 0, 0, 0.10),
+                0 1.5px 0px rgba(255, 255, 255, 0.7) inset;
+            padding: 6px;
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+            transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+            z-index: 100;
+        }
+
+        .dropdown-panel::before {
+            content: '';
+            position: absolute;
+            top: -14px;
+            left: 0;
+            right: 0;
+            height: 14px;
+        }
+
+        .nav-products:hover .dropdown-panel {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 10px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #1e3a5f;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(37, 99, 235, 0.08);
+            color: #1d4ed8;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.5);
+            margin: 4px 14px;
+        }
+    </style>
+
+</head>
+
+<body class="bg-gray-50 pt-24">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+            <!-- Logo -->
+            <div>
+                <img src="Assets/logos/CACHATTO-blue.svg" alt="CACHATTO" class="h-6" />
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8 text-gray-600 font-medium">
+                <a href="index.html" class="hover:text-blue-600">Home</a>
+                <a href="about.html" class="hover:text-blue-600">About Us</a>
+                <a href="#" class="hover:text-blue-600">Solutions</a>
+                <div class="nav-products">
+                    <button class="nav-products-btn">
+                        Products
+                        <svg class="chevron" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 6l4 4 4-4" />
+                        </svg>
+                    </button>
+
+                    <div class="dropdown-panel">
+                        <a href="cachatto-one.html" class="dropdown-item">CACHATTO One</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Ninja Connect Telework</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Ninja Connect ISM</a>
+                    </div>
+                </div> <a href="#" class="hover:text-blue-600">Resources</a>
+                <a href="career.html" class="text-blue-600 font-semibold">Career</a>
+                <a href="#" class="hover:text-blue-600">Contact</a>
+            </nav>
+
+            <!-- CTA (Desktop) -->
+            <div class="hidden md:flex">
+                <a href="#"
+                    class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-medium hover:bg-blue-700 transition shadow-sm">
+                    Free Trial
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button id="menu-btn" class="md:hidden text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-white z-[60] hidden flex flex-col">
+        <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+            <img src="Assets/logos/CACHATTO-blue.svg" alt="CACHATTO" class="h-6" />
+            <button id="close-btn" class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="flex-1 overflow-y-auto px-6 py-8">
+            <nav class="flex flex-col space-y-6 text-xl font-medium text-gray-800">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="#">Solutions</a>
+                
+                <div class="pt-4 border-t border-gray-100">
+                    <p class="text-sm text-gray-400 mb-4 uppercase tracking-wider">Products</p>
+                    <div class="flex flex-col space-y-4 text-lg text-gray-600">
+                        <a href="cachatto-one.html">CACHATTO One</a>
+                        <a href="#">Ninja Connect Telework</a>
+                        <a href="#">Ninja Connect ISM</a>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-gray-100 flex flex-col space-y-6">
+                    <a href="#">Resources</a>
+                    <a href="career.html" class="text-blue-600">Career</a>
+                    <a href="#">Contact</a>
+                </div>
+            </nav>
+        </div>
+        <div class="p-6 border-t border-gray-100">
+            <a href="#"
+                class="block w-full text-center bg-blue-600 text-white px-6 py-3.5 rounded-full font-medium hover:bg-blue-700 transition">
+                Free Trial
+            </a>
+        </div>
+    </div>
+
+
+    <!-- HERO SECTION -->
+    <section class="bg-gray-50 py-20 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <h1 class="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight leading-tight mb-6">
+                Work from anywhere, <br class="hidden md:block" />
+                <span class="text-blue-600">any time in the world.</span>
+            </h1>
+            <p class="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                Driven by technology at its core, CACHATTO India Pvt Ltd provides many opportunities for tech enthusiasts across development, leadership, management, sales and more.
+            </p>
+        </div>
+    </section>
+
+    <!-- WHO WE ARE & LIFE AT CACHATTO -->
+    <section class="bg-white py-24">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <!-- Left: Text -->
+            <div class="order-2 md:order-1">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 tracking-tight">Life At CACHATTO</h2>
+                
+                <div class="space-y-6 text-gray-600 text-[15px] leading-relaxed">
+                    <p>
+                        CACHATTO INDIA PRIVATE LIMITED (CIPL) is a Bangalore based subsidiary of e-Jan Networks Co. Japan launched in 2017. In the year 2003, e-Jan Networks Co. established CACHATTO, a unified solution to provide secure access to enterprise data without compromising on user agility or corporate manageability.
+                    </p>
+                    <p>
+                        Since its inception in 2017, CACHATTO India Pvt Ltd has come a long way. Our establishment in Bengaluru to market e-Jan’s innovative enterprise in India marked a significant development for us. 
+                    </p>
+                    <p>
+                        Our team in India has since worked diligently to innovate, create and promote CACHATTO in all of South-East Asia. The CACHATTO team is constantly moving forward with new creations while also keeping our existing customers satisfied through our product.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: Image -->
+            <div class="order-1 md:order-2 h-[400px] md:h-[500px] w-full">
+                <!-- Placeholder for office life -->
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team at CACHATTO" class="w-full h-full object-cover rounded-[32px] shadow-sm" />
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY JOIN US (VALUES) -->
+    <section class="bg-gray-50 py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6 tracking-tight">Why Join Us?</h2>
+                <p class="text-lg text-gray-600">Here’s why you should join hands with CACHATTO India Pvt Ltd.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="bg-white p-10 rounded-[32px] shadow-sm hover:shadow-md transition duration-300">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icon (Lightbulb) -->
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Innovation</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        With technology driving our team, our employees are always encouraged to tap into their creative minds and deliver innovative ideas.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-10 rounded-[32px] shadow-sm hover:shadow-md transition duration-300">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icon (Users) -->
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Teamwork</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        We believe in teamwork that makes the dream work. Coworkers are very supportive of each other, here at CACHATTO.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-10 rounded-[32px] shadow-sm hover:shadow-md transition duration-300">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icon (Globe) -->
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Diversity</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Being a Japanese company in India, we sincerely work towards achieving diversity and inclusion across the workspace.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white p-10 rounded-[32px] shadow-sm hover:shadow-md transition duration-300">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icon (Book) -->
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Learning</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Growth is one of the core elements at CACHATTO and every employee is encouraged and supported to improve their skills.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-white p-10 rounded-[32px] shadow-sm hover:shadow-md transition duration-300">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icon (Chat) -->
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Communication</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        We create open avenues of communication for employees to converse about anything from personal to professional issues.
+                    </p>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="bg-white p-10 rounded-[32px] shadow-sm hover:shadow-md transition duration-300">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center mb-6">
+                        <!-- Icon (Heart/Smile/Positivity) -->
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Positivity</h3>
+                    <p class="text-gray-600 leading-relaxed text-sm">
+                        Our workforce environment is always positive and welcoming, especially towards freshers to make them feel at home.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- JOB OPPORTUNITIES CTA -->
+    <section class="bg-white py-24 pb-32">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">Join Our Team</h2>
+            <p class="text-lg text-gray-600 mb-10 leading-relaxed">
+                We are constantly seeking to enhance our team with new, talented individuals. <br class="hidden md:block" />
+                If you are passionate about enterprise security and innovation, we would love to hear from you.
+            </p>
+            <a href="mailto:india-sales@cachatto.com" class="inline-flex items-center justify-center px-10 py-5 bg-blue-600 text-white rounded-full font-bold text-lg hover:bg-blue-700 transition duration-300 shadow-xl hover:shadow-2xl hover:-translate-y-1">
+                Submit Your CV
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </a>
+            <p class="mt-6 text-sm text-gray-500">Email us directly: <a href="mailto:india-sales@cachatto.com" class="text-blue-600 hover:underline">india-sales@cachatto.com</a></p>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="relative bg-gradient-to-r from-blue-700 to-blue-500 py-24 overflow-hidden">
+
+        <!-- Grid Overlay -->
+        <div class="absolute inset-0 opacity-30">
+            <div
+                class="w-full h-full bg-[linear-gradient(to_right,gray_1px,transparent_1px),linear-gradient(to_bottom,gray_1px,transparent_1px)] bg-[size:60px_60px]">
+            </div>
+        </div>
+
+        <div class="relative max-w-4xl mx-auto px-6 text-center text-white">
+
+            <!-- Small Label -->
+            <p class="uppercase tracking-widest text-sm text-blue-100 mb-4">
+                Let’s Talk
+            </p>
+
+            <!-- Heading -->
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Need Help?
+            </h2>
+
+            <!-- Subtext -->
+            <p class="text-blue-100 text-lg md:text-xl mb-10 leading-relaxed">
+                Our enterprise security specialists are ready to help you design the right
+                access architecture for your organisation.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+
+                <!-- Primary -->
+                <a href="#"
+                    class="bg-white text-blue-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition">
+                    Talk to an Expert →
+                </a>
+
+                <!-- Secondary -->
+                <a href="#"
+                    class="border border-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-blue-700 transition">
+                    Request Demo
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#0B1F3A] text-gray-400 pt-20 pb-10">
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+
+            <!-- LEFT -->
+            <div>
+                <h3 class="text-white text-2xl font-semibold mb-4">
+                    <img src="Assets/logos/CACHATTO-white.svg" alt="CACHATTO" class="h-5">
+                </h3>
+
+                <p class="text-sm leading-relaxed mb-6">
+                    Secure Unified Digital Workspace. Empowering enterprise teams with
+                    zero-trust access, data protection, and scalable security since 2004.
+                </p>
+
+                <!-- Social -->
+                <div class="flex space-x-3">
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition">
+                        <span class="text-sm">in</span>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition">
+                        <span class="text-sm">X</span>
+                    </a>
+                    <a href="#"
+                        class="w-10 h-10 flex items-center justify-center rounded-full bg-white/10 hover:bg-blue-600 transition">
+                        ▶
+                    </a>
+                </div>
+            </div>
+
+            <!-- PRODUCTS -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Products</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition">CACHATTO One</a></li>
+                    <li><a href="#" class="hover:text-white transition">NinjaConnect Telework</a></li>
+                    <li><a href="#" class="hover:text-white transition">NinjaConnect ISM</a></li>
+                </ul>
+            </div>
+
+            <!-- SOLUTIONS -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Solutions</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="#" class="hover:text-white transition">Remote Work Security</a></li>
+                    <li><a href="#" class="hover:text-white transition">BYOD & Unmanaged Devices</a></li>
+                    <li><a href="#" class="hover:text-white transition">Zero Trust Access</a></li>
+                    <li><a href="#" class="hover:text-white transition">IT-OT Security</a></li>
+                </ul>
+            </div>
+
+            <!-- COMPANY -->
+            <div>
+                <h4 class="text-white font-semibold mb-4">Company</h4>
+                <ul class="space-y-3 text-sm">
+                    <li><a href="about.html" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="#" class="hover:text-white transition">Customers</a></li>
+                    <li><a href="#" class="hover:text-white transition">Partners</a></li>
+                    <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Divider -->
+        <div
+            class="max-w-7xl mx-auto px-6 mt-16 border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center text-sm">
+
+            <p>© 2026 CACHATTO India Pvt, Ltd. All rights reserved.</p>
+
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms of Use</a>
+                <a href="#" class="hover:text-white transition">Cookie Settings</a>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            /* =========================
+               MOBILE MENU
+            ========================= */
+            const btn = document.getElementById('menu-btn');
+            const closeBtn = document.getElementById('close-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            if (btn && menu && closeBtn) {
+                btn.addEventListener('click', () => {
+                    menu.classList.remove('hidden');
+                    document.body.classList.add('overflow-hidden');
+                });
+
+                closeBtn.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    document.body.classList.remove('overflow-hidden');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
